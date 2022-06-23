@@ -1,0 +1,15 @@
+.cart-btn {
+    background: none;
+    color: inherit;
+    border: none;
+}
+
+a {
+    display: flex;
+    align-items: center;
+}
+
+span {
+    font-size: x-large;
+    padding-right: 5px;
+}
