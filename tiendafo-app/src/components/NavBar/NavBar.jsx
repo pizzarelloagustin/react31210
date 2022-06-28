@@ -3,7 +3,7 @@ import logo from '../../assets/images/circle-nodes-solid.svg'
 import './style.css'
 import CartWidget from '../CarWidget/CarWidget';
 
-function NavBar() {
+function NavBar( { cartItems } ) {
   return (
     <nav>
       <div class="nav-wrapper blue">
@@ -13,7 +13,7 @@ function NavBar() {
           <li><a href="#">Categoria 2</a></li>
           <li><a href="#">Categoria 3</a></li>
         </ul>
-        <CartWidget />
+        <CartWidget cartItems={cartItems} />
       </div>
     </nav>
   );
