@@ -63,7 +63,7 @@ const getData = new Promise((resolve, reject) => {
         } else {
             reject("Error en fakeApi");
         }
-    }, 4000);
+    }, 2000);
 });
 
 export default getData;
