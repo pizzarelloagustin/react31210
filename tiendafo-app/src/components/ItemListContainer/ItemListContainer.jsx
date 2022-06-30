@@ -1,17 +1,28 @@
+import React, { useEffect, useState } from 'react'
+import ItemList from '../ItemList/ItemList'
+import getData from '../../moks/fakeApi'
 import './style.css'
-import 'materialize-css/dist/css/materialize.min.css';
-import ItemCount from '../ItemCount/ItemCount';
+import Loader from '../Loader/Loader'
 
 const ItemListContainer = ({ greeting, onAdd }) => {
+
+    const [productList, setProductList] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        getData
+            .then((result) => setProductList(result))
+            .catch((error) => console.log(error))
+            .finally(() => setLoading(false))
+    }, [])
+
     return (
         <>
             <div className='landing'>
                 <div>{greeting}</div>
             </div>
-            <div class="row">
-                <ItemCount stock={5} initial={1} onAdd={onAdd} name={"Producto 1"} price={200} />
-                <ItemCount stock={0} initial={1} onAdd={onAdd} name={"Producto 2"} price={300} />
-                <ItemCount stock={10} initial={1} onAdd={onAdd} name={"Producto 3"} price={400} />
+            <div>
+                {loading ? <Loader /> : <ItemList productList={productList} onAdd={onAdd} />}
             </div>
         </>
     );

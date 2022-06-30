@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import 'materialize-css/dist/css/materialize.min.css';
-import producto from '../../assets/images/producto.svg'
+import './style.css'
 
-const ItemCount = ({ stock, initial, onAdd, name, price }) => {
+const Item = ({ product, onAdd }) => {
+
+    const { name, description, img, price, initial, stock } = product
 
     const [count, setCount] = useState(initial);
 
@@ -28,7 +30,7 @@ const ItemCount = ({ stock, initial, onAdd, name, price }) => {
         <div class="col s3">
             <div class="card">
                 <div class="card-image">
-                    <img src={producto} alt='imagenproducto' />
+                    <img src={img} alt='imagen producto' />
                     <a onClick={handlerClickAddToCart} class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons">add</i></a>
                 </div>
                 <div class="card-content">
@@ -40,12 +42,13 @@ const ItemCount = ({ stock, initial, onAdd, name, price }) => {
                         <a onClick={handlerClickAdd} class="waves-effect waves-light btn">+</a>
                     </div>
                     <div>
+                        <p>{description}</p>
                         <p>Stock: {stock}</p>
                     </div>
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default ItemCount;
+export default Item

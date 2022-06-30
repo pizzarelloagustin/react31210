@@ -4,17 +4,13 @@ import NavBar from './components/NavBar/NavBar';
 
 function App() {
 
-  var cartItems = 0;
-
-  const onAdd = (count) => {
-    cartItems = cartItems + count;
-    console.log("app");
+  const onAdd = (cartItems) => {
     console.log(cartItems)
   }
 
   return (
     <div>
-      <NavBar cartItems={cartItems} />
+      <NavBar />
       <ItemListContainer greeting={"Esto es TIENDAFO"} onAdd={onAdd} />
     </div>
   );
