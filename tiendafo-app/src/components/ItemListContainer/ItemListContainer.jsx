@@ -3,18 +3,22 @@ import ItemList from '../ItemList/ItemList'
 import getData from '../../moks/fakeApi'
 import './style.css'
 import Loader from '../Loader/Loader'
+import { useParams } from 'react-router-dom'
 
 const ItemListContainer = ({ greeting, onAdd }) => {
 
     const [productList, setProductList] = useState([])
     const [loading, setLoading] = useState(true)
 
+    const { categoryId } = useParams();
+
     useEffect(() => {
-        getData
+        setLoading(true)
+        getData(categoryId)
             .then((result) => setProductList(result))
             .catch((error) => console.log(error))
             .finally(() => setLoading(false))
-    }, [])
+    }, [categoryId])
 
     return (
         <>

@@ -8,7 +8,7 @@ const ItemList = ({ productList, onAdd }) => {
         <>
             <h3>Productos</h3>
             <div class="row">
-                {productList.map((product) => <Item key={product.id} product={product} onAdd={onAdd} />)}
+                {productList.map((product) => <Item key={product.id} product={product} />)}
             </div>
         </>
     )

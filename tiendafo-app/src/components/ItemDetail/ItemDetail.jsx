@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "materialize-css/dist/css/materialize.min.css";
 import "./style.css";
-import M from "materialize-css"
 
 const ItemDetail = ({ product, onAdd }) => {
-
+    console.log(product)
     const { name, description, img, price, initial, stock } = product
 
     const [count, setCount] = useState(initial);
