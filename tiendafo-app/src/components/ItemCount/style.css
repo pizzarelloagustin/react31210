@@ -1,0 +1,11 @@
+.divBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.divBtnAdd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

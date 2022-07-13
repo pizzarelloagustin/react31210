@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import 'materialize-css/dist/css/materialize.min.css';
-import producto from '../../assets/images/producto.svg'
+import "./style.css";
 
-const ItemCount = ({ stock, initial, onAdd, name, price }) => {
+const ItemCount = ({ stock, initial, onAdd }) => {
 
     const [count, setCount] = useState(initial);
 
@@ -25,24 +25,17 @@ const ItemCount = ({ stock, initial, onAdd, name, price }) => {
     }
 
     return (
-        <div class="col s3">
-            <div class="card">
-                <div class="card-image">
-                    <img src={producto} alt='imagenproducto' />
-                    <a onClick={handlerClickAddToCart} class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons">add</i></a>
-                </div>
-                <div class="card-content">
-                    <span class="card-title">{name}</span>
-                    <p>${price}</p>
-                    <div className='divBtn'>
-                        <a onClick={handlerClickSubtrack} class="waves-effect waves-light btn">-</a>
-                        <span>{count}</span>
-                        <a onClick={handlerClickAdd} class="waves-effect waves-light btn">+</a>
-                    </div>
-                    <div>
-                        <p>Stock: {stock}</p>
-                    </div>
-                </div>
+        <div class="card-content white-text">
+            <div className='divBtn'>
+                <a onClick={handlerClickSubtrack} class="waves-effect waves-light btn">-</a>
+                <span>{count}</span>
+                <a onClick={handlerClickAdd} class="waves-effect waves-light btn">+</a>
+            </div>
+            <div>
+                <p>Stock: {stock}</p>
+            </div>
+            <div className='divBtnAdd'>
+                <a onClick={handlerClickAddToCart} class="waves-effect waves-light btn">Añadir al Carrito</a>
             </div>
         </div>
     );

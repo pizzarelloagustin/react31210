@@ -12,19 +12,14 @@ import {
 
 
 function App() {
-
-  const onAdd = (cartItems) => {
-    console.log(cartItems)
-  }
-
   return (
     <div>
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="/" element={<ItemListContainer greeting={"Esto es TIENDAFO"} onAdd={onAdd} />} />
+          <Route path="/" element={<ItemListContainer greeting={"Esto es TIENDAFO"} />} />
           <Route path="/category/:categoryId" element={<ItemListContainer greeting='Filtrado'/>}/>
-          <Route path="/product/:productId" element={<ItemDetailContainer onAdd={onAdd} />} />
+          <Route path="/product/:productId" element={<ItemDetailContainer />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>

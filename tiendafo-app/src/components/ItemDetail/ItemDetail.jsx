@@ -1,31 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "materialize-css/dist/css/materialize.min.css";
-import "./style.css";
+import ItemCount from '../ItemCount/ItemCount';
+import { Link } from "react-router-dom";
 
-const ItemDetail = ({ product, onAdd }) => {
-    console.log(product)
+const ItemDetail = ({ product }) => {
+    
     const { name, description, img, price, initial, stock } = product
-
-    const [count, setCount] = useState(initial);
-
-    const handlerClickAdd = () => {
-        if (count < stock) {
-            setCount(count + 1);
-        }
+    
+    const [finish, setFinish] = useState(false)
+    
+    const onAdd = (cartItems) => {
+        console.log(cartItems)
+        setFinish(true)
     }
-
-    const handlerClickSubtrack = () => {
-        if (count > 1) {
-            setCount(count - 1);
-        }
-    }
-
-    const handlerClickAddToCart = () => {
-        if (count <= stock && stock != 0) {
-            onAdd(count);
-        }
-    }
-
+    
     return (
         <>
             <div class="row">
@@ -34,22 +22,23 @@ const ItemDetail = ({ product, onAdd }) => {
                         <div class="card-content white-text">
                             <div class="card-image">
                                 <img src={img} alt='imagen producto' />
-                                <a onClick={handlerClickAddToCart} class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons">add</i></a>
                             </div>
                             <span class="card-title">{name}</span>
                             <p>{description}</p>
-                            <div>
-                                <p>${price}</p>
-                                <div className='divBtn'>
-                                    <a onClick={handlerClickSubtrack} class="waves-effect waves-light btn">-</a>
-                                    <span>{count}</span>
-                                    <a onClick={handlerClickAdd} class="waves-effect waves-light btn">+</a>
-                                </div>
-                                <div>
-                                    <p>Stock: {stock}</p>
-                                </div>
-                            </div>
+                            <p>${price}</p>
                         </div>
+                        {finish ?
+                            (
+                                <div className='divBtnAdd'>
+                                    <Link to="/cart">
+                                    <a class="waves-effect waves-light btn-large">Finalizar Compra</a>
+                                    </Link>
+                                </div>
+                            ) : (
+                                <ItemCount stock={stock} initial={initial} onAdd={onAdd} />
+                            )
+                        }
+
                     </div>
                 </div>
             </div>

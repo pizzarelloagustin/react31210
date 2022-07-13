@@ -5,7 +5,7 @@ import './style.css'
 import Loader from '../Loader/Loader'
 import { useParams } from 'react-router-dom'
 
-const ItemListContainer = ({ greeting, onAdd }) => {
+const ItemListContainer = ({ greeting }) => {
 
     const [productList, setProductList] = useState([])
     const [loading, setLoading] = useState(true)
@@ -26,7 +26,7 @@ const ItemListContainer = ({ greeting, onAdd }) => {
                 <div>{greeting}</div>
             </div>
             <div>
-                {loading ? <Loader /> : <ItemList productList={productList} onAdd={onAdd} />}
+                {loading ? <Loader /> : <ItemList productList={productList} />}
             </div>
         </>
     );

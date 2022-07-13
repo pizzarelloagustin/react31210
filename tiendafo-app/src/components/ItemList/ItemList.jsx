@@ -2,7 +2,7 @@ import React from 'react'
 import Item from '../Item/Item'
 import 'materialize-css/dist/css/materialize.min.css';
 
-const ItemList = ({ productList, onAdd }) => {
+const ItemList = ({ productList }) => {
 
     return (
         <>

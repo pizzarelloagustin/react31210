@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Item = ({ product }) => {
 
-    const { id, name, img, price } = product
+    const { id, name, img, price, stock } = product
 
     return (
         <div class="col s3">
@@ -16,6 +16,7 @@ const Item = ({ product }) => {
                 <div class="card-content">
                     <span class="card-title">{name}</span>
                     <p>${price}</p>
+                    <p>Stock: {stock}</p>
                     <div className='divBtn'>
                         <Link to={`/product/${id}`}><a class="waves-effect waves-light btn">Ver Detalle</a></Link>
                     </div>

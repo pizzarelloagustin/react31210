@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-//import ItemList from '../ItemList/ItemList'
 import { getProduct } from '../../moks/fakeApi'
 import './style.css'
 import Loader from '../Loader/Loader'
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom'
 
-const ItemDetailContainer = ( { onAdd } ) => {
+const ItemDetailContainer = () => {
 
     
     const [productList, setProductList] = useState({})
@@ -22,14 +21,9 @@ const ItemDetailContainer = ( { onAdd } ) => {
             .finally(() => setLoading(false))
     }, [productId])
 
-        /*
-    console.log(productList)
-    console.log(productId)
-    */
-
     return (
             <div>
-                {loading ? <Loader /> : <ItemDetail product={productList} onAdd={onAdd} />}
+                {loading ? <Loader /> : <ItemDetail product={productList} />}
             </div>
     );
 };
