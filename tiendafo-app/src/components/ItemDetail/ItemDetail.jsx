@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "materialize-css/dist/css/materialize.min.css";
 import ItemCount from '../ItemCount/ItemCount';
 import { Link } from "react-router-dom";
+import { cartContext } from '../../Context/CartContext';
 
 const ItemDetail = ({ product }) => {
     
-    const { name, description, img, price, initial, stock } = product
+    const { name, description, img, price, initial, stock } = product;
     
-    const [finish, setFinish] = useState(false)
+    const [finish, setFinish] = useState(false);
+    const { addProduct } = useContext(cartContext);
     
-    const onAdd = (cartItems) => {
-        console.log(cartItems)
-        setFinish(true)
+    const onAdd = (count) => {
+        addProduct({...product, qty: count});
+        setFinish(true);
     }
     
     return (
