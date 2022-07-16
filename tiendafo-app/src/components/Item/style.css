@@ -3,3 +3,9 @@
     align-items: center;
     justify-content: space-evenly;
 }
+
+.divImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

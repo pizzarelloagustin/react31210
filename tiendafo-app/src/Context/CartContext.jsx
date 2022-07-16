@@ -44,8 +44,15 @@ const CartCustomProvider = ({ children }) => {
         setQtyProducts(0);
     }
 
+    const total = () => {
+        return products.reduce(
+            (acum, actual) => acum + actual.price * actual.qty,
+            0
+        );
+    };
+
     return (
-        <Provider value={{ products, addProduct, deleteProduct, qtyProducts, clear }}>
+        <Provider value={{ products, addProduct, deleteProduct, qtyProducts, clear, total }}>
             {children}
         </Provider>
     )

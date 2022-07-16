@@ -3,3 +3,18 @@
     align-items: center;
     justify-content: space-evenly;
 }
+
+.divImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.divMargin {
+    margin-top: 40px;
+}
+
+.titulo {
+    text-align: center;
+}
