@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import ItemList from '../ItemList/ItemList'
-import getData from '../../moks/fakeApi'
 import './style.css'
 import Loader from '../Loader/Loader'
 import { useParams } from 'react-router-dom'
+import { db } from '../../firebase/firebase'
+import { getDocs, collection, query, where } from 'firebase/firestore'
 
 const ItemListContainer = ({ greeting }) => {
 
@@ -13,9 +14,24 @@ const ItemListContainer = ({ greeting }) => {
     const { categoryId } = useParams();
 
     useEffect(() => {
-        setLoading(true)
-        getData(categoryId)
-            .then((result) => setProductList(result))
+        const productsCollection = collection(db, 'products');
+        console.log(productsCollection)
+        let auxCollection = productsCollection
+        if (categoryId !== undefined) {
+            auxCollection = query(productsCollection, where('category', '==', categoryId));
+            console.log(auxCollection)
+        }
+        getDocs(auxCollection)
+            .then(result => {
+                const list = result.docs.map(product => {
+                    return {
+                        id: product.id,
+                        ...product.data(),
+                    }
+                });
+                setProductList(list);
+            }
+            )
             .catch((error) => console.log(error))
             .finally(() => setLoading(false))
     }, [categoryId])

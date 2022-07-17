@@ -9,7 +9,7 @@ const Item = ({ product }) => {
 
     return (
         <div class="col s3">
-            <div class="card">
+            <div class="card teal lighten-4">
                 <div className='divImg'>
                     <img height="200" src={img} alt='imagen producto' />
                 </div>
