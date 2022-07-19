@@ -19,7 +19,7 @@ const ItemDetail = ({ product }) => {
 
     return (
         <div className="divMargin">
-            <div class="row teal lighten-2 white-text">
+            <div class="row teal lighten-3 white-text">
                 <div class="col s4">
                     <div className='divImg'>
                         <img height="300" src={img} alt='imagen producto' />

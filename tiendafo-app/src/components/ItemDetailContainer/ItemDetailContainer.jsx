@@ -15,11 +15,15 @@ const ItemDetailContainer = () => {
     const { productId } = useParams();
 
     useEffect(() => {
+        setLoading(true);
         const productsCollection = collection(db, 'products');
         const refDoc = doc(productsCollection, productId);
         getDoc(refDoc)
             .then(result => {
-                setProductList(result.data());
+                setProductList({
+                    id: result.id,
+                    ...result.data()
+                });
             }
             )
             .catch((error) => console.log(error))

@@ -25,7 +25,7 @@ const Cart = () => {
                     <div>
                         {products.map((prod) => (
                             <div className="divMargin" key={prod.id}>
-                                <div class="row teal teal accent-4 white-text">
+                                <div class="row green lighten-3 white-text">
                                     <div class="col s4">
                                         <div className='divImg'>
                                             <img height="200" src={prod.img} alt='imagen producto' />

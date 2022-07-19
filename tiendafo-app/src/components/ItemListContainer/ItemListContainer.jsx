@@ -14,6 +14,7 @@ const ItemListContainer = ({ greeting }) => {
     const { categoryId } = useParams();
 
     useEffect(() => {
+        setLoading(true);
         const productsCollection = collection(db, 'products');
         console.log(productsCollection)
         let auxCollection = productsCollection
